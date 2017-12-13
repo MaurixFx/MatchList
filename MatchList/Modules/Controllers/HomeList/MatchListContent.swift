@@ -40,7 +40,7 @@ class MatchListContent: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = COLOR_PRINCIPAL
-        label.font = UIFont(name: "AvenirNext-Regular", size: 16)
+        label.font = UIFont(name: "AvenirNext-Regular", size: 15)
         return label
     }()
     
@@ -48,7 +48,7 @@ class MatchListContent: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = COLOR_PRINCIPAL
-        label.font = UIFont(name: "AvenirNext-Regular", size: 16)
+        label.font = UIFont(name: "AvenirNext-Regular", size: 15)
         return label
     }()
     
@@ -82,7 +82,7 @@ class MatchListContent: UICollectionViewCell {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = COLOR_PRINCIPAL
-        label.font = UIFont(name: "AvenirNext-Bold", size: 18)
+        label.font = UIFont(name: "AvenirNext-Bold", size: isSmallPhone() ? 14 : 16)
         return label
     }()
     
@@ -91,7 +91,7 @@ class MatchListContent: UICollectionViewCell {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = COLOR_PRINCIPAL
-        label.font = UIFont(name: "AvenirNext-Bold", size: 18)
+        label.font = UIFont(name: "AvenirNext-Bold", size: isSmallPhone() ? 14 : 16)
         return label
     }()
     
@@ -150,9 +150,9 @@ class MatchListContent: UICollectionViewCell {
         detailMatchLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         stadiumLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         containerView.addSubview(localTeamImageView)
-        localTeamImageView.anchor(top: stadiumLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 30, paddingRight: 0, paddingBottom: 0, width: 100, height: 100)
+        localTeamImageView.anchor(top: stadiumLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 30, paddingRight: 0, paddingBottom: 0, width: isSmallPhone() ? 80 : 100, height: isSmallPhone() ? 80 : 100)
         containerView.addSubview(visitTeamImageView)
-        visitTeamImageView.anchor(top: localTeamImageView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 30, paddingBottom: 0, width: 100, height: 100)
+        visitTeamImageView.anchor(top: localTeamImageView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 30, paddingBottom: 0, width: isSmallPhone() ? 80 : 100, height: isSmallPhone() ? 80 : 100)
         
         // Config Stack View Goals
         setupStackViewGoals()
@@ -168,16 +168,19 @@ class MatchListContent: UICollectionViewCell {
         // Create separator
         let dividerView = UIView()
         dividerView.backgroundColor = COLOR_SEPARATOR_VIEW
+
         // Add constraints to StackView
-        stackView.anchor(top: stadiumLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 125, height: 50)
-        stackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        stackView.anchor(top: stadiumLabel.bottomAnchor, left: localTeamImageView.rightAnchor, bottom: nil, right: visitTeamImageView.leftAnchor, paddingTop: 30, paddingLeft: 10, paddingRight: 10, paddingBottom: 0, width: 0, height: 50)
+        //stackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        
+
         //Add team Names
         containerView.addSubview(nameTeamLocalLabel)
         containerView.addSubview(nameTeamVisitLabel)
         containerView.addSubview(dividerView)
         //Config Constraints
-        nameTeamLocalLabel.anchor(top: localTeamImageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 20, paddingRight: 0, paddingBottom: 0, width: 120, height: 50)
-        nameTeamVisitLabel.anchor(top: visitTeamImageView.bottomAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingRight: 20, paddingBottom: 0, width: 120, height: 50)
+        nameTeamLocalLabel.anchor(top: localTeamImageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 20, paddingRight: 0, paddingBottom: 0, width: isSmallPhone() ? 100 : 120, height: 50)
+        nameTeamVisitLabel.anchor(top: visitTeamImageView.bottomAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingRight: 20, paddingBottom: 0, width: isSmallPhone() ? 100 : 120, height: 50)
         containerView.addSubview(calendarButton)
         containerView.addSubview(nameTitleRemember)
         dividerView.anchor(top: nil, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 0, height: 8)

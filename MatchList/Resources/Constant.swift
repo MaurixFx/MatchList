@@ -73,6 +73,10 @@ func getDateStart(date: String) -> Date {
     return dateFormatter.date(from: date)!
 }
 
+func isSmallPhone() -> Bool {
+    return UIScreen.main.bounds.size.height < 667
+}
+
 public extension UIColor {
     
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
