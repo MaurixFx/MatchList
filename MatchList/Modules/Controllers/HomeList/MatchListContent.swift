@@ -171,8 +171,6 @@ class MatchListContent: UICollectionViewCell {
 
         // Add constraints to StackView
         stackView.anchor(top: stadiumLabel.bottomAnchor, left: localTeamImageView.rightAnchor, bottom: nil, right: visitTeamImageView.leftAnchor, paddingTop: 30, paddingLeft: 10, paddingRight: 10, paddingBottom: 0, width: 0, height: 50)
-        //stackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        
 
         //Add team Names
         containerView.addSubview(nameTeamLocalLabel)
